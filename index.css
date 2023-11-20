@@ -43,3 +43,38 @@ div.container{
     cursor: pointer;
     background-color: #D7D7D7;
 }
+.books-container{
+    background-color: bisque;
+}
+#modal {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    font-weight: bold;
+    width: 300px;
+    margin: 100px auto;
+    border-radius: 8px;
+    background-color: #c758ff;
+    padding: 10px 25px 10px 15px;    
+    transition: 0.2s ease-in-out;
+}
+input[type="text"], input[type="number"]{
+    cursor: text;
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #FFFBFB;
+    border-radius: 8px;
+    height: max-content;
+}
+.read-it{
+    display: flex; flex-direction: row; justify-content: center;
+    gap: 15px;
+}

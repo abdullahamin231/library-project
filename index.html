@@ -16,13 +16,24 @@
     </header>
     <main>
         <div class="container">
-            <div class="add-book">
-                <button>+ Add book</button>
+            <div class="add-book" id="addBookBtn">
+                <button onclick="getBook()">+ Add book</button>
             </div>
             <div class="books-container">
                 <div class="book"></div>
             </div>
         </div>
     </main>
+    <div id="modal">
+        <p>Add a new book</p>
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Author">
+        <input type="number" placeholder="Pages">
+        <div class="read-it">
+            <p>Have you read it?</p>
+            <input type="checkbox" name="" id="">
+        </div>
+    </div>
+    <script src="index.js"></script>
 </body>
 </html>
