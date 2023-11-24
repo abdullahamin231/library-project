@@ -17,24 +17,33 @@
     <main>
         <div class="container">
             <div class="add-book" id="addBookBtn">
-                <button style="font-family: Poppins;" onclick="getBook()">+ Add book</button>
+                <button style="font-family: Poppins;" onclick="addBook()">+ Add book</button>
             </div>
-            <div class="books-container">
-                <div class="book"></div>
+            <div id="books-container">
+                <!-- <div class="book">
+                    <p>Title</p>
+                    <p>Author</p>
+                    <p>Pages</p>
+                    <button id="read-btn">Read</button>
+                    <button id="remove-btn">Remove</button>
+                </div> -->
             </div>
         </div>
     </main>
     <div id="modal">
         <p>Add a new book</p>
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="Author">
-        <input type="number" placeholder="Pages">
-        <div class="read-it">
-            <p>Have you read it?</p>
-            <input type="checkbox" name="" id="">
-        </div>
-        <button style="font-family: Poppins;" id="submit-button">Submit</button>
+        <form action="submit" id="form" >
+            <input id="title" type="text" placeholder="Title" required>
+            <input id="author" type="text" placeholder="Author" required>
+            <input id="pages" type="number" placeholder="Pages" required>
+            <div class="read-it">
+                <p>Have you read it?</p>
+                <input type="checkbox" name="" id="read">
+            </div>
+            <button style="font-family: Poppins;" id="submit-button" type="submit">Submit</button>
+        </form>
     </div>
+
     <script src="index.js"></script>
 </body>
 </html>

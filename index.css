@@ -2,14 +2,15 @@ body{
     margin: 0 auto;
     font-family: Poppins;
 }
-.model-opened{
-    opacity: 0.8;
-}
+
+
 header{
     background-color: #FFFBFB;
     display: flex; flex-direction: row; justify-content: space-around; align-items: center;
     padding: 0.6rem 0rem 1rem 0rem;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .library-txt{
     font-weight: 700;
     font-size: 2em;
@@ -39,43 +40,44 @@ div.container{
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
-    transition: background-color .15s ease-in-out;
+    margin-bottom: 20px;
+    transition: background-color .3s ease-in-out;
 }
 .add-book > button:hover{
     cursor: pointer;
     background-color: #D7D7D7;
 }
-.books-container{
-    background-color: bisque;
-}
+
 #modal {
     text-align: center;
     display: flex;
     align-items: center;
     flex-direction: column;
-    visibility: visible;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    left: 50%;
-    top: 55%;
     visibility: hidden;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     font-weight: bold;
     width: 300px;
-    padding: 0px 15px;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    z-index: 100;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    background-color: #fff;
 }
 
-input[type="text"], input[type="number"]{
+input[type="text"],
+input[type="number"] {
     cursor: text;
-    width: 100%;
+    width: 90%;
     padding: 10px 5px;
     margin-bottom: 10px;
-    border: none;
-    background-color: #FFFBFB;
+    border: 1px solid #dedede;
     border-radius: 8px;
     height: max-content;
+    box-sizing: border-box;
 }
 .read-it{
     display: flex; flex-direction: row; justify-content: center;
@@ -84,9 +86,9 @@ input[type="text"], input[type="number"]{
 #submit-button{
     width: 100%;
     border: none;
-    background-color: rgb(15, 240, 49);
     color: white;
     font-weight: bold;
+    background-color: rgb(23, 87, 205);
     font-size: 24px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -94,5 +96,62 @@ input[type="text"], input[type="number"]{
 }
 #submit-button:hover{
     cursor: pointer;
-    background-color: rgb(23, 227, 54);
+    background-color: rgb(86, 145, 255);
+}
+
+#books-container{
+    display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 20px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+
+    /* Center the content */
+    justify-content: center;
+    align-items: center;
+}
+
+.book:hover {
+    transform: scale(1.05);
+}
+
+.book p {
+    font-size: 1.2em;
+    margin: 6px 0;
+}
+
+.book button {
+    margin-top: 20px;
+    font-size: 1em;
+    height: min-content;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#read-btn{
+    background-color: #dedede;
+}
+#read-btn:hover{
+    background-color: #574caf;
+}
+#remove-btn{
+    background-color: rgb(216, 216, 216);
+}
+#remove-btn:hover{
+    background-color: #ff5a5a;
 }
