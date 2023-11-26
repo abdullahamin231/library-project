@@ -1,6 +1,7 @@
 body{
     margin: 0 auto;
     font-family: Poppins;
+
 }
 
 
@@ -28,10 +29,11 @@ header{
 }
 main{
     margin: 0 auto;
-    height: 100dvh;
+    min-height: 100vh; /* Set a minimum height for main */
     background-color: #F0EEF1;
+    
 }
-div.container{
+.container{
     padding: 30px;
     text-align: center;
 }
@@ -68,16 +70,16 @@ div.container{
     background-color: #fff;
 }
 
-input[type="text"],
-input[type="number"] {
+
+input[type="text"], input[type="number"]{
     cursor: text;
     width: 90%;
     padding: 10px 5px;
     margin-bottom: 10px;
-    border: 1px solid #dedede;
+    border: none;
+    background-color: #FFFBFB;
     border-radius: 8px;
     height: max-content;
-    box-sizing: border-box;
 }
 .read-it{
     display: flex; flex-direction: row; justify-content: center;
@@ -144,13 +146,13 @@ input[type="number"] {
 }
 
 #read-btn{
-    background-color: #dedede;
+    background-color: #7664ff;
 }
 #read-btn:hover{
-    background-color: #574caf;
+    background-color: #3d23ff;
 }
 #remove-btn{
-    background-color: rgb(216, 216, 216);
+    background-color: #ff3030;
 }
 #remove-btn:hover{
     background-color: #ff5a5a;

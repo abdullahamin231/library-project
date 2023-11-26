@@ -1,6 +1,6 @@
 const form = document.getElementById('form');
 const modal = document.getElementById("modal");
-const library = [];
+let library = [];
 const booksContainer = document.getElementById('books-container');
 
 function book(title, author, pages, read) {
@@ -9,6 +9,15 @@ function book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+
+function getBooksfromLocalStorage(){
+    const gottenBooks = localStorage.getItem("books");
+    if(gottenBooks){
+        library = JSON.parse(gottenBooks);
+    }
+}
+
+getBooksfromLocalStorage();
 
 function addBookToLibrary(book) {
     library.push(book);
@@ -22,7 +31,15 @@ form.addEventListener("submit", function (e) {
     const read = document.getElementById('read').checked;
     const newBook = new book(title, author, pages, read);
     addBookToLibrary(newBook);
-    for(let i = 0; i < 1; i++){
+    displayBooks();      
+    modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
+    }
+);
+
+function displayBooks(){
+    booksContainer.innerHTML = "";
+
+    for (let i = 0; i < library.length; i++) {
         var div = document.createElement("div");
         var titleTag = document.createElement("p");
         var authorTag = document.createElement("p");
@@ -30,35 +47,50 @@ form.addEventListener("submit", function (e) {
         var readBtn = document.createElement("button");
         var removeBtn = document.createElement("button");
 
-        // Assuming you have content to add to each element
         titleTag.textContent = library[i].title;
         authorTag.textContent = library[i].author;
         pagesTag.textContent = library[i].pages;
         removeBtn.textContent = "Remove";
         removeBtn.setAttribute("id", "remove-btn");
-        if(library[i].read == true)
+        removeBtn.setAttribute("data-index", i); // Add data-index attribute to store the index of the book
+        removeBtn.addEventListener("click", removeBook); // Add click event listener
+
+        if (library[i].read == true)
             readBtn.textContent = "Read";
         else
             readBtn.textContent = "Unread";
-            readBtn.setAttribute("id", "read-btn");
+        readBtn.setAttribute("data-index", i); // Add data-index attribute to store the index of the book
+        readBtn.addEventListener("click", doTheRead);
+        readBtn.setAttribute("id", "read-btn");
 
-        // Append elements to div
         div.appendChild(titleTag);
         div.appendChild(authorTag);
         div.appendChild(pagesTag);
         div.appendChild(readBtn);
         div.appendChild(removeBtn);
 
-        // Now, 'div' contains all the created elements as its children
         div.classList.add('book');
-
-        booksContainer.appendChild(div);        
+        booksContainer.appendChild(div);
     }
-    modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
-    
-});
 
+    localStorage.setItem("books", JSON.stringify(library));
+}
+
+displayBooks();
 
 function addBook(){
     modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
+}
+
+function doTheRead(event) {
+    const index = event.target.getAttribute("data-index");
+    const currentBook = library[index];
+    currentBook.read = !currentBook.read; // Toggle the 'read' property
+    displayBooks(); // Update the displayed books
+}
+
+function removeBook(event) {
+    const index = event.target.getAttribute("data-index");
+    library.splice(index, 1); // Remove the book from the library array
+    displayBooks(); // Update the displayed books
 }
